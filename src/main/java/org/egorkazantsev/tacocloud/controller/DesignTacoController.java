@@ -7,8 +7,10 @@ import org.egorkazantsev.tacocloud.domain.Taco;
 import org.egorkazantsev.tacocloud.domain.TacoOrder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -56,7 +58,13 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
+    public String processTaco(@Valid Taco taco,
+                              Errors errors,
+                              @ModelAttribute TacoOrder tacoOrder) {
+
+        if (errors.hasErrors())
+            return "design.html";
+
         tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
 

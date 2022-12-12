@@ -1,9 +1,9 @@
-package org.egorkazantsev.tacocloud.repository;
+package org.egorkazantsev.tacocloud.repository.impl;
 
 import org.egorkazantsev.tacocloud.domain.Ingredient;
+import org.egorkazantsev.tacocloud.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public class JdbcIngredientRepository implements IngredientRepository {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public JdbcIngredientRepository(JdbcTemplate jdbcTemplate) {

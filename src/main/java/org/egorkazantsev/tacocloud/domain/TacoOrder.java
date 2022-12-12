@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 public class TacoOrder implements Serializable {
 
-//    @Serial
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private Long id;
